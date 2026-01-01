@@ -1,2 +1,334 @@
-# portfolio-AI
-- Développement d’applications intelligentes et scripts d’analyse de données
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Jonathan Chahine Jean - Expert IA & CDA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --deep-blue: #0A1A2F;
+            --electric-blue: #1F6FFF;
+            --modern-gold: #D4A857;
+            --bg-dark: #050b14;
+            --sidebar-bg: #0d1b2d;
+            --card-bg: rgba(255, 255, 255, 0.03);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            background-color: #1a1a1a;
+            font-family: 'Inter', sans-serif;
+            color: #ffffff;
+            line-height: 1.6;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        /* Gestion des pages pour l'écran et l'impression */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 0;
+            margin: 20px auto;
+            background: var(--deep-blue);
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Sidebar commune */
+        .sidebar {
+            background-color: var(--sidebar-bg);
+            padding: 40px 25px;
+            border-right: 1px solid rgba(31, 111, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-header { text-align: center; margin-bottom: 35px; }
+        .profile-icon {
+            width: 70px; height: 70px;
+            background: var(--electric-blue);
+            border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 35px;
+            box-shadow: 0 0 20px rgba(31, 111, 255, 0.4);
+        }
+
+        .sidebar-section { margin-bottom: 30px; }
+        .sidebar-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            color: var(--modern-gold);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(212, 168, 87, 0.3);
+            padding-bottom: 5px;
+        }
+
+        .contact-link {
+            display: flex; align-items: center; gap: 12px;
+            font-size: 11px; margin-bottom: 10px;
+            color: #cbd5e1; text-decoration: none;
+            transition: color 0.2s;
+        }
+        .contact-link:hover { color: var(--electric-blue); }
+        .contact-link i { width: 16px; color: var(--electric-blue); text-align: center; }
+
+        .skill-group { margin-bottom: 15px; }
+        .skill-label { font-size: 10px; font-weight: 700; color: var(--electric-blue); margin-bottom: 6px; text-transform: uppercase; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+        .tag { background: rgba(255,255,255,0.05); padding: 4px 10px; border-radius: 5px; font-size: 10px; border: 1px solid rgba(31,111,255,0.2); }
+
+        /* Contenu principal */
+        .main-content { 
+            padding: 50px; 
+            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--bg-dark) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centrage vertical */
+        }
+        
+        .main-header { margin-bottom: 40px; }
+        .name { font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 900; line-height: 1; margin-bottom: 10px; }
+        .job-title { font-size: 18px; color: var(--modern-gold); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .section-block { margin-bottom: 35px; }
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px; margin-bottom: 15px;
+            display: flex; align-items: center; gap: 15px;
+            color: #fff;
+        }
+        .section-title::after { content: ""; flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+
+        .summary { font-size: 14px; color: #cbd5e1; line-height: 1.6; }
+
+        .experience-item { margin-bottom: 25px; position: relative; padding-left: 20px; border-left: 2px solid var(--electric-blue); }
+        .exp-header { display: flex; justify-content: space-between; align-items: baseline; }
+        .exp-company { font-weight: 700; font-size: 16px; color: #fff; }
+        .exp-date { font-size: 12px; font-weight: 600; color: var(--modern-gold); }
+        .exp-role { font-weight: 600; font-size: 14px; color: var(--electric-blue); margin: 5px 0; }
+        .exp-list { font-size: 13px; color: #cbd5e1; list-style: none; margin-top: 8px; }
+        .exp-list li { margin-bottom: 5px; }
+        .exp-list li::before { content: "▹"; color: var(--electric-blue); margin-right: 10px; }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(31,111,255,0.1);
+            padding: 20px;
+            border-radius: 12px;
+        }
+        .badge { background: var(--modern-gold); color: var(--deep-blue); font-size: 10px; font-weight: 900; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
+
+        .audit-box {
+            background: rgba(31, 111, 255, 0.08);
+            border-radius: 8px;
+            padding: 15px;
+            font-size: 13px;
+            border: 1px dashed var(--electric-blue);
+            margin-top: 15px;
+            color: #fff;
+        }
+
+        /* Responsive / Impression */
+        @media print {
+            body { background: none; margin: 0; padding: 0; }
+            .page { 
+                margin: 0; 
+                box-shadow: none; 
+                page-break-after: always;
+                border: none;
+            }
+            .sidebar, .main-content { height: 297mm; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- PAGE 1 : PROFIL & EXPÉRIENCES -->
+<div class="page">
+    <aside class="sidebar">
+        <div class="profile-header">
+            <div class="profile-icon"><i class="fa-solid fa-microchip"></i></div>
+            <div style="background: var(--modern-gold); color: var(--deep-blue); font-size: 9px; font-weight: 900; padding: 5px 15px; border-radius: 20px; text-transform: uppercase;">Expert IA & Data</div>
+        </div>
+
+        <div class="sidebar-section">
+            <h3 class="sidebar-title">Contact</h3>
+            <a href="tel:0627517818" class="contact-link"><i class="fa-solid fa-phone"></i> 06 27 51 78 18</a>
+            <a href="mailto:playchahinjo@gmail.com" class="contact-link"><i class="fa-solid fa-envelope"></i> playchahinjo@gmail.com</a>
+            <div class="contact-link"><i class="fa-solid fa-location-dot"></i> Paris / Mobile</div>
+            <a href="https://linkedin.com/in/jonathan-jean11" target="_blank" class="contact-link"><i class="fa-brands fa-linkedin"></i> Profil LinkedIn</a>
+            <a href="https://github.com/JJEAN-cyber" target="_blank" class="contact-link"><i class="fa-brands fa-github"></i> Portfolio GitHub</a>
+        </div>
+
+        <div class="sidebar-section">
+            <h3 class="sidebar-title">Langues</h3>
+            <p style="font-size: 12px; margin-bottom: 5px;"><strong>Français</strong> : Maternel</p>
+            <p style="font-size: 12px; margin-bottom: 5px;"><strong>Portugais</strong> : Bilingue</p>
+            <p style="font-size: 12px;"><strong>Anglais</strong> : B2 (Technique)</p>
+        </div>
+
+        <div class="sidebar-section">
+            <h3 class="sidebar-title">Atouts</h3>
+            <div class="skill-tags">
+                <span class="tag">Autonomie</span>
+                <span class="tag">Curiosité</span>
+                <span class="tag">Agilité</span>
+                <span class="tag">Esprit d'équipe</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="main-header">
+            <h1 class="name">JONATHAN <br><span style="color: var(--electric-blue)">CHAHINE JEAN</span></h1>
+            <p class="job-title">Expert Développeur IA <br>Concepteur d'Applications</p>
+        </header>
+
+        <section class="section-block">
+            <h2 class="section-title"><i class="fa-solid fa-user-tie"></i> Profil Professionnel</h2>
+            <p class="summary">
+                Développeur passionné par la fusion entre l'Intelligence Artificielle et le développement applicatif. Titulaire d'un titre de Concepteur Développeur d'Applications (BAC+3), je poursuis actuellement une spécialisation d'Expert IA. 
+                Mon objectif est de concevoir des solutions innovantes centrées sur l'engagement utilisateur et l'automatisation intelligente.
+            </p>
+        </section>
+
+        <section class="section-block">
+            <h2 class="section-title"><i class="fa-solid fa-laptop-code"></i> Expériences Clés</h2>
+            
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-company">ACCOR TECH</span>
+                    <span class="exp-date">2023 – 2025</span>
+                </div>
+                <p class="exp-role">Développeur Web & Logiciel (Alternance)</p>
+                <ul class="exp-list">
+                    <li>Maintenance corrective et évolutive du parc applicatif interne.</li>
+                    <li>Optimisation des workflows de données et de l'expérience utilisateur.</li>
+                    <li>Développement du projet <strong>Chahied2</strong> : Outil de monitoring des flux techniques.</li>
+                    <li>Collaboration en méthodologie Agile au sein d'équipes pluridisciplinaires.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item" style="margin-bottom: 0;">
+                <div class="exp-header">
+                    <span class="exp-company">ALTEN / HSBC PARIS</span>
+                    <span class="exp-date">2020 – 2021</span>
+                </div>
+                <p class="exp-role">Contrôle d'Accès & Gestion des Flux</p>
+                <p class="exp-desc">Environnement bancaire haute sécurité. Gestion rigoureuse des habilitations et des communications critiques.</p>
+            </div>
+        </section>
+    </main>
+</div>
+
+<!-- PAGE 2 : COMPÉTENCES & PROJETS IA -->
+<div class="page">
+    <aside class="sidebar">
+        <div class="profile-header">
+            <div class="profile-icon"><i class="fa-solid fa-brain"></i></div>
+            <div style="background: var(--modern-gold); color: var(--deep-blue); font-size: 9px; font-weight: 900; padding: 5px 15px; border-radius: 20px; text-transform: uppercase;">Stage Avril 2026</div>
+        </div>
+
+        <div class="sidebar-section">
+            <h3 class="sidebar-title">Expertise IA</h3>
+            <div class="skill-group">
+                <div class="skill-tags">
+                    <span class="tag">LLM & RAG</span>
+                    <span class="tag">n8n Automation</span>
+                    <span class="tag">Prompt Eng.</span>
+                    <span class="tag">Fine-tuning</span>
+                    <span class="tag">HuggingFace</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <h3 class="sidebar-title">Tech Stack</h3>
+            <div class="skill-group">
+                <div class="skill-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Pandas / NumPy</span>
+                    <span class="tag">React / JS</span>
+                    <span class="tag">MySQL / NoSQL</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">Git / GitHub</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-section" style="margin-top: auto;">
+            <h3 class="sidebar-title">Intérêts</h3>
+            <p style="font-size: 11px; opacity: 0.8; line-height: 1.5;">
+                <strong>Storytelling IA</strong> : Création de récits via VEO3.<br>
+                <strong>E-sport</strong> : Analyse de données de performance.<br>
+                <strong>Éthique</strong> : IA responsable.
+            </p>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <section class="section-block">
+            <h2 class="section-title"><i class="fa-solid fa-rocket"></i> Réalisations Innovantes</h2>
+            <div class="project-card">
+                <span class="badge">Intelligence Artificielle & Marketing</span>
+                <p style="font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 10px;">Marketplace Événementielle Narrative</p>
+                <p class="summary" style="font-size: 13px; margin-bottom: 15px;">
+                    Conception d'un écosystème e-commerce où l'acte d'achat est transformé en quête narrative. L'IA générative adapte l'interface et le ton selon le profil psychologique de l'utilisateur (Archétypes : Titan, Stratège, Guépard).
+                </p>
+                <ul class="exp-list" style="margin-bottom: 15px;">
+                    <li>Mise en place d'un moteur de recommandation basé sur l'IA.</li>
+                    <li>Architecture micro-services via API REST.</li>
+                    <li>Automatisation des processus de segmentation via n8n.</li>
+                </ul>
+                <div class="audit-box">
+                    <strong>Appel à audit :</strong> Projet en phase de validation technique. Je recherche des mentors et partenaires dans l'E-sport ou l'événementiel pour tester la scalabilité du modèle d'engagement.
+                </div>
+            </div>
+        </section>
+
+        <section class="section-block">
+            <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Parcours Académique</h2>
+            
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-company">SIMPLON SUD</span>
+                    <span class="exp-date">2025 – 2026</span>
+                </div>
+                <p class="exp-role">Expert Développeur en Intelligence Artificielle</p>
+                <p class="exp-desc">Focus sur le Deep Learning, le Natural Language Processing (NLP) et le déploiement de modèles pré-entraînés.</p>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-company">SIMPLON MONTREUIL</span>
+                    <span class="exp-date">2023 – 2025</span>
+                </div>
+                <p class="exp-role">Titre CDA - Concepteur Développeur d'Applications</p>
+                <p class="exp-desc">Niveau BAC+3. Maîtrise de la conception logicielle, des bases de données et du cycle de vie DevOps.</p>
+            </div>
+        </section>
+
+        <section class="section-block" style="margin-bottom: 0;">
+            <h2 class="section-title"><i class="fa-solid fa-handshake"></i> Recherche de Stage</h2>
+            <p class="summary">
+                Je suis à la recherche d'une opportunité de stage de 6 mois débutant en <strong>Avril 2026</strong>. <br>
+                Ma motivation : appliquer mes compétences en IA pour résoudre des problématiques business concrètes et optimiser l'engagement client.
+            </p>
+        </section>
+    </main>
+</div>
+
+</body>
+</html>
